@@ -84,6 +84,13 @@ section.main > div.block-container{
   padding-top:0!important;margin-top:0!important}
 [data-testid="stMain"]{padding-top:0!important}
 [data-testid="stAppViewContainer"]{padding-top:0!important}
+/* menu khusus HP: tersembunyi di desktop */
+.st-key-menu_hp_box{display:none}
+@media (max-width:768px){
+  .st-key-menu_hp_box{display:block;background:#FFFFFF;border:1px solid #E7E2CE;
+    border-radius:12px;padding:10px 12px;margin:10px 0 6px}
+  .st-key-menu_hp_box [data-testid="stCaptionContainer"]{color:#3B507D}
+}
 </style>"""
 
 st.markdown(SIDEBAR_CSS, unsafe_allow_html=True)
@@ -108,5 +115,23 @@ with st.sidebar:
         st.session_state.fasilitas = None
         st.session_state.halaman = "Dashboard"
         st.rerun()
+        # --- menu khusus HP (hanya tampil di layar sempit lewat CSS) ---
+DAFTAR = list(MENU)
+
+
+def pindah_hp():
+    st.session_state.halaman = st.session_state.menu_hp
+
+
+def keluar_hp():
+    st.session_state.fasilitas = None
+    st.session_state.halaman = "Dashboard"
+
+
+st.session_state["menu_hp"] = st.session_state.halaman   # jaga sinkron dengan sidebar
+with st.container(key="menu_hp_box"):
+    st.caption(f"🏥 {st.session_state.fasilitas}")
+    st.selectbox("Menu", DAFTAR, key="menu_hp", on_change=pindah_hp)
+    st.button("Keluar", key="keluar_hp", on_click=keluar_hp)
 
 MENU[st.session_state.halaman].tampil()
