@@ -42,6 +42,22 @@ CSS = """<style>
 
 .wfoot{text-align:center;color:#3B507D;font-size:12px;
   border-top:1px solid #E7E2CE;padding-top:14px;margin-top:8px}
+  /* ===== Mode HP ===== */
+@media (max-width:768px){
+  .block-container,[data-testid="stMainBlockContainer"]{
+    padding:0 14px 24px!important}
+  .d-title{font-size:21px;padding-top:12px}
+  .kpis{grid-template-columns:repeat(2,1fr);gap:10px}
+  .kpi .v{font-size:22px}
+  .panel{padding:14px}
+  .drow{grid-template-columns:1fr;gap:4px;padding:8px 0;
+    border-bottom:1px solid #F5F4F0}
+  .ba{grid-template-columns:1fr;gap:8px}
+  .ba .arrow{justify-self:center;transform:rotate(90deg)}
+}
+@media (min-width:769px) and (max-width:1000px){
+  .kpis{grid-template-columns:repeat(3,1fr)}
+}
 </style>"""
 
 
@@ -53,8 +69,8 @@ def tampil():
     masuk = db("SELECT * FROM rujukan WHERE tujuan=?", (fasilitas,), ambil=True)
 
     # "Gagal kirim" dibaca dari log pengujian (isi sesuai cara catat_log menyimpan)
-    gagal = sum(1 for l in st.session_state.get("log_uji", [])
-                if l.get("res") == "Gagal")
+    gagal = db("SELECT COUNT(*) AS n FROM log_uji WHERE hasil='Gagal'",
+               ambil=True)[0]["n"]
 
     ringkasan = {
         "Rujukan keluar": len(keluar),
