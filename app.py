@@ -78,12 +78,7 @@ SIDEBAR_CSS = """<style>
   background:#3B507D!important;justify-content:center!important}
 [data-testid="stSidebar"] .st-key-menu_keluar .stButton>button p{
   font-size:12px;font-weight:400;text-align:center!important}
-  [data-testid="stAppViewContainer"] [data-testid="stMain"] [data-testid="stMainBlockContainer"],
-[data-testid="stAppViewContainer"] .main .block-container,
-section.main > div.block-container{
-  padding-top:0!important;margin-top:0!important}
-[data-testid="stMain"]{padding-top:0!important}
-[data-testid="stAppViewContainer"]{padding-top:0!important}
+
 /* menu khusus HP: tersembunyi di desktop */
 .st-key-menu_hp_box{display:none}
 @media (max-width:768px){
@@ -91,12 +86,22 @@ section.main > div.block-container{
     border-radius:12px;padding:10px 12px;margin:10px 0 6px}
   .st-key-menu_hp_box [data-testid="stCaptionContainer"]{color:#3B507D}
 }
+
 /* hilangkan pita putih di atas semua halaman */
 [data-testid="stHeader"]{
   background:transparent!important;
   height:0!important;min-height:0!important}
 [data-testid="stToolbar"],[data-testid="stDecoration"]{display:none!important}
-[data-testid="stMainBlockContainer"]{padding-top:0!important}
+
+/* sembunyikan elemen kosong pembawa <style> supaya tidak memakan jarak */
+[data-testid="stElementContainer"]:has(style),
+[data-testid="element-container"]:has(style){
+  display:none!important}
+
+/* jarak atas semua halaman: satu aturan, menang atas CSS tiap halaman */
+.stApp [data-testid="stAppViewContainer"] [data-testid="stMain"] [data-testid="stMainBlockContainer"]{
+  padding-top:14px!important;margin-top:0!important}
+[data-testid="stMain"],[data-testid="stAppViewContainer"]{padding-top:0!important}
 </style>"""
 
 st.markdown(SIDEBAR_CSS, unsafe_allow_html=True)
@@ -121,7 +126,8 @@ with st.sidebar:
         st.session_state.fasilitas = None
         st.session_state.halaman = "Dashboard"
         st.rerun()
-        # --- menu khusus HP (hanya tampil di layar sempit lewat CSS) ---
+
+# --- menu khusus HP (hanya tampil di layar sempit lewat CSS) ---
 DAFTAR = list(MENU)
 
 

@@ -43,7 +43,7 @@ CSS = """<style>
 [data-testid="stMainBlockContainer"]{
   max-width:100%!important;
   padding:0 24px 24px 24px!important}
-.b-title{padding-top:16px}
+
 
 .wfoot{text-align:center;color:#3B507D;font-size:12px;
   border-top:1px solid #E7E2CE;padding-top:14px;margin-top:24px}
