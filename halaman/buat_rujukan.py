@@ -9,11 +9,13 @@ from utils import catat_uji
 
 CSS = """<style>
 .stApp{background:#F5F4F0}
+[data-testid="stHeader"]{height:0!important;min-height:0!important;background:transparent!important}
+[data-testid="stAppViewContainer"],[data-testid="stMain"]{padding-top:0!important}
 [data-testid="stMainBlockContainer"]{
   max-width:100%!important;
-  padding-left:24px!important;padding-right:24px!important}
+  padding:12px 24px 24px 24px!important}
 
-.b-title{font-size:24px;font-weight:700;color:#112250;margin:0}
+.b-title{font-size:24px;font-weight:700;color:#112250;margin:0;padding-top:0}
 .b-sub{color:#3B507D;font-size:14px;margin:4px 0 16px}
 
 /* kartu putih pembungkus form */
