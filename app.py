@@ -91,6 +91,12 @@ section.main > div.block-container{
     border-radius:12px;padding:10px 12px;margin:10px 0 6px}
   .st-key-menu_hp_box [data-testid="stCaptionContainer"]{color:#3B507D}
 }
+/* hilangkan pita putih di atas semua halaman */
+[data-testid="stHeader"]{
+  background:transparent!important;
+  height:0!important;min-height:0!important}
+[data-testid="stToolbar"],[data-testid="stDecoration"]{display:none!important}
+[data-testid="stMainBlockContainer"]{padding-top:0!important}
 </style>"""
 
 st.markdown(SIDEBAR_CSS, unsafe_allow_html=True)
