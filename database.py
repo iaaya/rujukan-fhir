@@ -56,7 +56,7 @@ def isi_seed():
         ("RJ002", "P002", "Budi Santoso", "Hipertensi esensial", "RS Harapan", "RS Bhakti Persada", "Diterima", "07:30", "07:52", None),
         ("RJ003", "P003", "Siti Aminah", "Pneumonia", "RS Sejahtera", "RS Bhakti Persada", "Ditolak", "07:00", "07:40", "Ruang ICU penuh"),
         ("RJ004", "P004", "Rahmat Hidayat", "Diabetes melitus tipe 2", "Puskesmas Tamalanrea", "RS Bhakti Persada", "Menunggu", "08:25", None, None),
-        ("RJ005", "P005", "Dewi Lestari", "Diabetes melitus tipe 2", "RS Mitra Medika", "RS Sehat Makassar", "Diterima", "06:50", "07:20", None),
+        ("RJ005", "P005", "Dewi Lestari", "Diabetes melitus tipe 2", "RS Harapan", "RS Sehat Makassar", "Diterima", "06:50", "07:20", None),
         ("RJ006", "P006", "Yusuf Karim", "Hipertensi esensial", "RS Bhakti Persada", "RS Harapan", "Menunggu", "08:40", None, None),
         ("RJ007", "P007", "Maya Sari", "Pneumonia", "Puskesmas Mamajang", "RS Sejahtera", "Menunggu", "08:55", None, None),
         ("RJ008", "P008", "Hendra Wijaya", "Hipertensi esensial", "RS Harapan", "Puskesmas Mamajang", "Menunggu", "09:05", None, None),

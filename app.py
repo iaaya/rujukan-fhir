@@ -7,6 +7,9 @@ from halaman import (selamat_datang, dashboard, buat_rujukan,
 
 st.set_page_config(page_title="Sistem Rujukan FHIR", page_icon="🏥", layout="wide")
 siapkan_db()
+from database import db
+db("DELETE FROM rujukan WHERE pengirim=? OR tujuan=?",
+   ("RS Mitra Medika", "RS Mitra Medika"))
 pasang_gaya()
 gaya_dropdown()
 

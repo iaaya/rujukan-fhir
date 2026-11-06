@@ -10,7 +10,7 @@ PILIH = "— pilih —"
 
 FASKES = [
     "RS Bhakti Persada", "RS Sehat Makassar", "RS Sejahtera", "RS Harapan",
-    "RS Mitra Medika", "Puskesmas Tamalanrea", "Puskesmas Mamajang",
+    "Puskesmas Tamalanrea", "Puskesmas Mamajang",
 ]
 
 # nama diagnosis -> (kode ICD-10, kode SNOMED CT). Sumber: kodemedis.com

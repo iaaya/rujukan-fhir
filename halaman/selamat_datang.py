@@ -81,6 +81,28 @@ div.st-key-kartu_login .stButton>button p{color:#FFFFFF}
 
 /* ===== footer ===== */
 .wfoot{text-align:center;color:#E7E2CE;font-size:12px;padding:40px 24px 28px}
+/* ===== Mode HP ===== */
+.wkartu{box-sizing:border-box}
+@media (max-width:768px){
+  .wnav{padding:12px 16px}
+  .wnav b{font-size:15px}
+  .whero{padding:32px 18px 0}
+  .whero h1{font-size:28px!important;line-height:1.25}
+  .whero .weye{font-size:14px!important}
+  .whero p{font-size:15px!important}
+  div.st-key-kartu_login{width:calc(100% - 32px);padding:18px!important;margin:22px auto 0}
+  .wband{margin-top:40px;padding:32px 16px 36px}
+  .wtim h2{font-size:24px!important}
+  .wgrid{gap:12px}
+  .wkartu{width:calc(50% - 6px);padding:16px 10px}
+  .wkartu img,.winisial{width:80px;height:80px}
+  .wkartu b{font-size:13.5px}
+  .wkartu small{font-size:12px}
+  .wfoot{padding:28px 16px 24px}
+}
+@media (max-width:420px){
+  .whero h1{font-size:24px!important}
+}
 </style>"""
 
 
