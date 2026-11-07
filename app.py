@@ -1,5 +1,5 @@
 import streamlit as st
-from database import siapkan_db
+from database import siapkan_db, db
 from utils import pasang_gaya, gaya_dropdown
 from halaman import (selamat_datang, dashboard, buat_rujukan,
                      rujukan_masuk, rujukan_terkirim,
@@ -7,7 +7,6 @@ from halaman import (selamat_datang, dashboard, buat_rujukan,
 
 st.set_page_config(page_title="Sistem Rujukan FHIR", page_icon="🏥", layout="wide")
 siapkan_db()
-from database import db
 db("DELETE FROM rujukan WHERE pengirim=? OR tujuan=?",
    ("RS Mitra Medika", "RS Mitra Medika"))
 pasang_gaya()
@@ -35,10 +34,14 @@ MENU = {
 }
 
 SIDEBAR_CSS = """<style>
-/* lebar & latar sidebar */
-[data-testid="stSidebar"]{
-  background:#112250;
+/* latar sidebar */
+[data-testid="stSidebar"]{background:#112250}
+
+/* DIUBAH: lebar 250px hanya dipaksa saat sidebar terbuka,
+   supaya sidebar yang tertutup di HP tidak meninggalkan ruang kosong */
+[data-testid="stSidebar"][aria-expanded="true"]{
   width:250px!important;min-width:250px!important;max-width:250px!important}
+
 [data-testid="stSidebarHeader"]{display:none}
 [data-testid="stSidebarUserContent"]{padding:20px 0 16px 0!important}
 
@@ -84,7 +87,8 @@ SIDEBAR_CSS = """<style>
 
 /* menu khusus HP: tersembunyi di desktop */
 .st-key-menu_hp_box{display:none}
-@media (max-width:768px){
+/* DIUBAH: tampil di layar sempit ATAU perangkat sentuh (termasuk "Situs desktop" di HP) */
+@media (max-width:768px), (hover:none) and (pointer:coarse){
   .st-key-menu_hp_box{display:block;background:#FFFFFF;border:1px solid #E7E2CE;
     border-radius:12px;padding:10px 12px;margin:10px 0 6px}
   .st-key-menu_hp_box [data-testid="stCaptionContainer"]{color:#3B507D}
@@ -95,6 +99,12 @@ SIDEBAR_CSS = """<style>
   background:transparent!important;
   height:0!important;min-height:0!important}
 [data-testid="stToolbar"],[data-testid="stDecoration"]{display:none!important}
+
+/* BARU (opsional): panah pembuka sidebar tetap terlihat saat sidebar tertutup */
+[data-testid="stExpandSidebarButton"],
+[data-testid="stSidebarCollapsedControl"]{
+  display:flex!important;visibility:visible!important;opacity:1!important;
+  position:fixed!important;top:8px;left:8px;z-index:999999}
 
 /* sembunyikan elemen kosong pembawa <style> supaya tidak memakan jarak */
 [data-testid="stElementContainer"]:has(style),
@@ -130,7 +140,7 @@ with st.sidebar:
         st.session_state.halaman = "Dashboard"
         st.rerun()
 
-# --- menu khusus HP (hanya tampil di layar sempit lewat CSS) ---
+# --- menu khusus HP (tampil di layar sempit / perangkat sentuh lewat CSS) ---
 DAFTAR = list(MENU)
 
 
