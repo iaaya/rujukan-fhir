@@ -3,6 +3,7 @@ import json
 import streamlit as st
 
 from database import db
+from database import reset_data
 
 SERVER = "https://hapi.fhir.org/baseR4"
 
@@ -149,7 +150,13 @@ def tampil():
     else:
         baris = ('<tr><td colspan="6" class="kosong">Belum ada pengujian. Coba kirim '
                  'form kosong atau aktifkan mode uji kode tidak valid.</td></tr>')
-
+    with st.expander("Reset data demo"):
+        st.warning("Semua rujukan dan log pengujian akan dihapus, "
+                   "lalu data contoh dimuat ulang.")
+        if st.button("Reset sekarang", key="reset_demo"):
+            reset_data()
+            st.session_state.pop("terakhir", None)
+            st.rerun()
     _tampil_html(
         '<div class="fw">'
         '<div class="m-title">Pengujian FHIR</div>'
