@@ -150,13 +150,7 @@ def tampil():
     else:
         baris = ('<tr><td colspan="6" class="kosong">Belum ada pengujian. Coba kirim '
                  'form kosong atau aktifkan mode uji kode tidak valid.</td></tr>')
-    with st.expander("Reset data demo"):
-        st.warning("Semua rujukan dan log pengujian akan dihapus, "
-                   "lalu data contoh dimuat ulang.")
-        if st.button("Reset sekarang", key="reset_demo"):
-            reset_data()
-            st.session_state.pop("terakhir", None)
-            st.rerun()
+
     _tampil_html(
         '<div class="fw">'
         '<div class="m-title">Pengujian FHIR</div>'
@@ -173,3 +167,21 @@ def tampil():
         'Server HAPI FHIR publik dapat dibaca siapa pun.</p>'
         '</div>'
     )
+    st.markdown("""<style>
+    [data-testid="stExpander"]{
+      background:#FFFFFF;border:1px solid #E7E2CE;border-radius:12px;
+      margin-top:20px}
+    [data-testid="stExpander"] details{border:0!important}
+    [data-testid="stExpander"] summary{color:#112250;font-weight:600}
+    [data-testid="stExpander"] .stButton>button{
+      background:#9b2c2c;color:#FFFFFF;border:0;border-radius:8px;font-weight:600}
+    [data-testid="stExpander"] .stButton>button:hover{background:#7d2323;color:#FFFFFF}
+    </style>""", unsafe_allow_html=True)
+
+    with st.expander("Reset data demo"):
+        st.warning("Semua rujukan dan log pengujian akan dihapus, "
+                   "lalu data contoh dimuat ulang.")
+        if st.button("Reset sekarang", key="reset_demo"):
+            reset_data()
+            st.session_state.pop("terakhir", None)
+            st.rerun()
