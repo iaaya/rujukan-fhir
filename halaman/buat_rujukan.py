@@ -5,15 +5,12 @@ from config import FASKES, DIAGNOSIS, PILIH, FMT
 from database import db, simpan, catat_log
 from validasi import cek_field_wajib, cek_kode_diagnosis
 from fhir_client import proses_fhir
-from utils import catat_uji
 
 CSS = """<style>
 .stApp{background:#F5F4F0}
-[data-testid="stHeader"]{height:0!important;min-height:0!important;background:transparent!important}
-[data-testid="stAppViewContainer"],[data-testid="stMain"]{padding-top:0!important}
 [data-testid="stMainBlockContainer"]{
   max-width:100%!important;
-  padding:12px 24px 24px 24px!important}
+  padding-left:24px!important;padding-right:24px!important;padding-bottom:24px!important}
 
 .b-title{font-size:24px;font-weight:700;color:#112250;margin:0;padding-top:0}
 .b-sub{color:#3B507D;font-size:14px;margin:4px 0 16px}
@@ -40,9 +37,6 @@ CSS = """<style>
 .st-key-form_rujukan .stButton>button{
   background:#3B507D;color:#fff;border:0;border-radius:10px;
   font-weight:700;padding:10px 18px}
-[data-testid="stMainBlockContainer"]{
-  max-width:100%!important;
-  padding:0 24px 24px 24px!important}
 
 
 .wfoot{text-align:center;color:#3B507D;font-size:12px;
@@ -70,7 +64,7 @@ def tampil():
 
     with st.container(border=True, key="form_rujukan"):
         c1, c2 = st.columns(2)
-        id_pasien = c1.text_input("ID Pasien *", placeholder="RJ001")
+        id_pasien = c1.text_input("ID Pasien *", placeholder="P001")
         nama = c2.text_input("Nama Pasien *", placeholder="Nama fiktif")
         tgl = c1.date_input("Tanggal Lahir", value=date(1980, 5, 12),
                             min_value=date(1700, 1, 1), max_value=date.today())
