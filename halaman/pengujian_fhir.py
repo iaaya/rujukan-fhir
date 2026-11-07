@@ -66,6 +66,16 @@ CSS = """<style>
 .fw .foot{margin-top:28px;padding-top:12px;border-top:1px solid #E7E2CE;
   color:#3B507D;font-size:12px;text-align:center}
 @media(max-width:760px){.fw .ftwo{grid-template-columns:1fr}}
+
+/* kotak reset data demo */
+[data-testid="stExpander"]{
+  background:#FFFFFF;border:1px solid #E7E2CE;border-radius:12px;
+  margin-top:4px}
+[data-testid="stExpander"] details{border:0!important}
+[data-testid="stExpander"] summary{color:#112250;font-weight:600}
+[data-testid="stExpander"] .stButton>button{
+  background:#9b2c2c;color:#FFFFFF;border:0;border-radius:8px;font-weight:600}
+[data-testid="stExpander"] .stButton>button:hover{background:#7d2323;color:#FFFFFF}
 </style>"""
 
 
@@ -151,6 +161,7 @@ def tampil():
         baris = ('<tr><td colspan="6" class="kosong">Belum ada pengujian. Coba kirim '
                  'form kosong atau aktifkan mode uji kode tidak valid.</td></tr>')
 
+    # 1) isi halaman (tanpa footer)
     _tampil_html(
         '<div class="fw">'
         '<div class="m-title">Pengujian FHIR</div>'
@@ -163,21 +174,10 @@ def tampil():
         '<th>Waktu</th><th>Skenario</th><th>Input</th><th>Diharapkan</th>'
         '<th>Aktual</th><th>Hasil</th></tr></thead>'
         f'<tbody>{baris}</tbody></table></div>'
-        '<p class="foot">Prototipe akademik · gunakan data fiktif saja. '
-        'Server HAPI FHIR publik dapat dibaca siapa pun.</p>'
         '</div>'
     )
-    st.markdown("""<style>
-    [data-testid="stExpander"]{
-      background:#FFFFFF;border:1px solid #E7E2CE;border-radius:12px;
-      margin-top:20px}
-    [data-testid="stExpander"] details{border:0!important}
-    [data-testid="stExpander"] summary{color:#112250;font-weight:600}
-    [data-testid="stExpander"] .stButton>button{
-      background:#9b2c2c;color:#FFFFFF;border:0;border-radius:8px;font-weight:600}
-    [data-testid="stExpander"] .stButton>button:hover{background:#7d2323;color:#FFFFFF}
-    </style>""", unsafe_allow_html=True)
 
+    # 2) kotak reset (di atas footer)
     with st.expander("Reset data demo"):
         st.warning("Semua rujukan dan log pengujian akan dihapus, "
                    "lalu data contoh dimuat ulang.")
@@ -185,3 +185,9 @@ def tampil():
             reset_data()
             st.session_state.pop("terakhir", None)
             st.rerun()
+
+    # 3) footer (paling bawah)
+    _tampil_html(
+        '<div class="fw"><p class="foot">Prototipe akademik · '
+        'gunakan data fiktif saja. Server HAPI FHIR publik dapat dibaca siapa pun.</p></div>'
+    )
