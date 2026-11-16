@@ -40,6 +40,15 @@ def pasang_gaya():
     [data-testid="stMain"] div.stButton>button,
     div[data-testid="stFormSubmitButton"]>button{
         background:#3B507D;color:#fff;border:0}
+        @media (max-width:768px){
+  .block-container,[data-testid="stMainBlockContainer"]{
+    padding:1rem .9rem 2rem!important}
+  h1{font-size:1.6rem!important}
+  [data-testid="stMetricValue"]{font-size:1.5rem}
+  .st-key-ringkasan [data-testid="stHorizontalBlock"]{flex-wrap:wrap;gap:.5rem}
+  .st-key-ringkasan [data-testid="stColumn"]{
+    min-width:calc(50% - .5rem)!important;flex:1 1 calc(50% - .5rem)!important}
+}
     </style>""", unsafe_allow_html=True)
 
 
