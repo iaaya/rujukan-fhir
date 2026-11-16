@@ -10,7 +10,7 @@ FOLDER_FOTO = Path(__file__).resolve().parent.parent / "assets" / "tim"
 
 # (nama, peran, nama file foto di assets/tim). Sesuaikan nama file dengan foto Anda.
 TIM = [
-    ("Nur Sariah", "Pengembang Web", "riaa.jpg"),
+    ("Nur Sariah", "Developer", "riaa.jpg"),
     ("Andi Rezky Ramadhany Hamzah", "Analis kasus dan data", "kiki.jpg"),
     ("Fhanizah Juhaerul Nanda", "Desain UI/UX", "fani.jpg"),
     ("Citra Aulia", "Koordinator dan Penguji Fungsional", "citra.jpg"),
